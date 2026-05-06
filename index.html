@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI vs Your Eye</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       NAV
+  ============================================================ -->
+  <nav class="nav" id="nav">
+    <a href="#" class="nav__logo">VTRUST</a>
+    <ul class="nav__links">
+      <li><a href="#steps-section">How it works</a></li>
+      <li><a href="#comparison-section">Compare</a></li>
+      <li><a href="#results-section">Results</a></li>
+    </ul>
+    <a href="#hero-section" class="btn btn--outline btn--sm">Begin</a>
+  </nav>
+
+  <!-- ============================================================
+       HERO SECTION
+  ============================================================ -->
+  <section class="hero" id="hero-section" data-state="visible">
+    <div class="hero__content">
+      <span class="label label--accent">Experiment No. 01</span>
+      <h1 class="hero__title">AI vs<br/>your eye</h1>
+      <p class="hero__subtitle">
+        Can AI create a better composition than you?<br/>
+        The algorithm is watching. So are we.
+      </p>
+      <div class="hero__actions">
+        <a href="#steps-section" class="btn btn--primary">Start Experiment</a>
+        <a href="#feature-frame" class="btn btn--ghost">Learn more</a>
+      </div>
+    </div>
+    <div class="hero__image-wrap">
+      <img src="pictures/hero.jpg" alt="hero.jpg" class="hero__image" />
+      <div class="hero__image-overlay" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       STEPS SECTION
+  ============================================================ -->
+  <section class="steps" id="steps-section" data-state="visible">
+    <div class="steps__inner">
+
+      <article class="step" id="step-01">
+        <div class="step__number" aria-hidden="true">01</div>
+        <div class="step__body">
+          <span class="label">Capture</span>
+          <h2 class="step__title">Take your photo</h2>
+          <p class="step__desc">Point your camera and capture a moment. Any subject works — a portrait, a street scene, something personal.</p>
+          <div class="step__actions">
+            <button class="btn btn--outline btn--sm">Ready</button>
+            <button class="btn btn--ghost btn--sm">Skip ›</button>
+          </div>
+        </div>
+      </article>
+
+      <div class="step-divider" aria-hidden="true"></div>
+
+      <article class="step" id="step-02">
+        <div class="step__number" aria-hidden="true">02</div>
+        <div class="step__body">
+          <span class="label">Analysis</span>
+          <h2 class="step__title">AI examines your image</h2>
+          <p class="step__desc">The system analyses your photo and considers alternative compositions — rule of thirds, focal weight, negative space.</p>
+          <div class="step__actions">
+            <button class="btn btn--outline btn--sm">Next</button>
+            <button class="btn btn--ghost btn--sm">Back</button>
+          </div>
+        </div>
+      </article>
+
+      <div class="step-divider" aria-hidden="true"></div>
+
+      <article class="step" id="step-03">
+        <div class="step__number" aria-hidden="true">03</div>
+        <div class="step__body">
+          <span class="label">Compare</span>
+          <h2 class="step__title">See both versions side by side</h2>
+          <p class="step__desc">Your original framing appears alongside the AI's suggestion. No labels. Just the images.</p>
+          <div class="step__actions">
+            <button class="btn btn--outline btn--sm">Next</button>
+            <button class="btn btn--ghost btn--sm">Back</button>
+          </div>
+        </div>
+      </article>
+
+      <div class="step-divider" aria-hidden="true"></div>
+
+      <article class="step" id="step-04">
+        <div class="step__number" aria-hidden="true">04</div>
+        <div class="step__body">
+          <span class="label">Choose</span>
+          <h2 class="step__title">Which composition do you trust</h2>
+          <p class="step__desc">Make your choice and see how it holds up. Neither answer is wrong. Both tell us something.</p>
+          <div class="step__actions">
+            <button class="btn btn--outline btn--sm">Choose</button>
+            <button class="btn btn--ghost btn--sm">Back</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FEATURE SECTION — Frame your moment
+  ============================================================ -->
+  <section class="feature feature--left" id="feature-frame" data-state="visible">
+<div class="feature__upload">
+  <input 
+    type="file" 
+    id="uploadInput" 
+    accept="image/*" 
+    style="display: none;"
+  />
+  <label for="uploadInput" class="btn btn--outline" style="cursor: pointer;">
+    Choose photo
+  </label>
+  <p style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--color-text-muted); margin-top: 0.5rem;">
+    Click to upload an image
+  </p>
+</div>
+    <div class="feature__image-wrap">
+      <img src="pictures/2.jpg" alt="Person framing a shot" class="feature__image" />
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FEATURE SECTION — Analyzing your image
+  ============================================================ -->
+  <section class="feature feature--right" id="feature-analyze" data-state="visible">
+    <div class="feature__image-wrap">
+      <img src="pictures/3.jpg" alt="Laptop with image on screen, warm scene" class="feature__image" />
+    </div>
+    <div class="feature__text">
+      <span class="label">Processing</span>
+      <h2 class="feature__title">Analyzing your image</h2>
+      <p class="feature__desc">The algorithm reads light, weight, and depth insight. It finds the geometry in your scene and reconstructs the frame around what matters most.</p>
+      <div class="analysis-indicator" aria-hidden="true">
+        <span class="analysis-indicator__dot"></span>
+        <span class="analysis-indicator__label">Loading…</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FEATURE SECTION — Your eye against the machine
+  ============================================================ -->
+  <section class="feature feature--left feature--accent" id="feature-against" data-state="visible">
+    <div class="feature__text">
+      <span class="label label--light">Contrast</span>
+      <h2 class="feature__title">Your eye against the machine</h2>
+      <p class="feature__desc">Two visions of the same moment. See what you captured vs. what the algorithm proposed. Both are correct. Neither is complete.</p>
+    </div>
+    <div class="feature__image-wrap feature__image-wrap--duo">
+      <img src="images/feature-yours.jpg" alt="User's composition" class="feature__image" />
+      <img src="images/feature-ai.jpg" alt="AI's composition" class="feature__image" />
+    </div>
+  </section>
+
+  <!-- ============================================================
+       COMPARISON SECTION  ← core interaction
+  ============================================================ -->
+  <section class="comparison" id="comparison-section" data-state="visible">
+    <div class="comparison__header">
+      <span class="label label--accent">Side by side</span>
+      <h2 class="comparison__title">Your eye against the machine</h2>
+    </div>
+
+    <div class="comparison__grid">
+      <div class="comparison__panel" id="comparison-yours">
+        <span class="comparison__label comparison__label--yours">Yours</span>
+        <div class="comparison__image-wrap">
+          <img id="yourImage" src="" class="comparison__image" />
+        <!--   <div class="comparison__shimmer" aria-hidden="true"></div> -->
+        </div>
+        <p class="comparison__meta">No algorithm proposed composition</p>
+      </div>
+
+      <div class="comparison__divider" aria-hidden="true">
+        <span class="comparison__vs">VS</span>
+      </div>
+
+      <div class="comparison__panel" id="comparison-ai">
+        <span class="comparison__label comparison__label--ai">AI's</span>
+        <div class="comparison__image-wrap">
+          <img id="aiImage" src="" class="comparison__image" />
+         <!--  <div class="comparison__shimmer" aria-hidden="true"></div>  -->
+        </div>
+        <p class="comparison__meta">Algorithm proposed composition</p>
+      </div>
+    </div>
+
+    <div class="comparison__actions">
+      <button class="btn btn--trust btn--trust-yours" id="btn-trust-yours">
+        I trust my photo
+      </button>
+      <button class="btn btn--trust btn--trust-ai" id="btn-trust-ai">
+        I trust the AI
+      </button>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       RESULTS SECTION
+  ============================================================ -->
+  <section class="results" id="results-section" data-state="visible">
+    <div class="results__inner">
+
+      <article class="step" id="step-05">
+        <div class="step__number" aria-hidden="true">05</div>
+        <div class="step__body">
+          <span class="label">Choose</span>
+          <h2 class="step__title">Which composition do you trust</h2>
+          <p class="step__desc">Now that you know, which version feels more right to you. Does your instinct align with the algorithm's choice.</p>
+          <div class="step__actions">
+            <button class="btn btn--outline btn--sm">Yours</button>
+            <button class="btn btn--ghost btn--sm">Next</button>
+          </div>
+        </div>
+      </article>
+
+      <div class="step-divider" aria-hidden="true"></div>
+
+      <article class="step" id="step-06">
+        <div class="step__number" aria-hidden="true">06</div>
+        <div class="step__body">
+          <span class="label">Result</span>
+          <h2 class="step__title">How others have chosen</h2>
+          <p class="step__desc">You are not alone in this. See how other participants voted on whether their instinct or the algorithm made the better frame.</p>
+          <div class="step__actions">
+            <button class="btn btn--outline btn--sm">View</button>
+            <button class="btn btn--ghost btn--sm">Skip</button>
+          </div>
+        </div>
+      </article>
+
+      <div class="step-divider" aria-hidden="true"></div>
+
+      <article class="step" id="step-07">
+        <div class="step__number" aria-hidden="true">07</div>
+        <div class="step__body">
+          <span class="label">Again</span>
+          <h2 class="step__title">Try another photo</h2>
+          <p class="step__desc">The experiment continues. Capture something new and see how the result changes. Each image tells a different story.</p>
+          <div class="step__actions">
+            <button class="btn btn--primary btn--sm">Again</button>
+            <button class="btn btn--ghost btn--sm">End</button>
+          </div>
+        </div>
+      </article>
+
+      <div class="step-divider" aria-hidden="true"></div>
+
+      <article class="step" id="step-08">
+        <div class="step__number" aria-hidden="true">08</div>
+        <div class="step__body">
+          <span class="label">Note</span>
+          <h2 class="step__title">What this means</h2>
+          <p class="step__desc">Trust is always made in terms of data. Every choice you make here adds to our understanding of how humans and machines see differently.</p>
+          <div class="step__actions">
+            <button class="btn btn--outline btn--sm">Read more</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer" id="footer">
+    <div class="footer__inner">
+      <a href="#" class="footer__logo">VTRUST</a>
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+        <a href="#">Project</a>
+      </nav>
+      <p class="footer__copy">&copy; 2025 AI vs Your Eye. An experimental art project.</p>
+    </div>
+  </footer>
+  
+<script src="script.js"></script>
+
+</body>
+</html>
