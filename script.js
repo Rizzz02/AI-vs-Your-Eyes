@@ -1,6 +1,9 @@
 const uploadInput = document.getElementById("uploadInput");
 const yourImage = document.getElementById("yourImage");
 const aiImage = document.getElementById("aiImage");
+const btnTrustYours = document.getElementById("btn-trust-yours");
+const btnTrustAI = document.getElementById("btn-trust-ai");
+const choiceFeedback = document.getElementById("choice-feedback");
 
 uploadInput.addEventListener("change", async function () {
     const file = this.files[0];
@@ -39,3 +42,13 @@ uploadInput.addEventListener("change", async function () {
         console.error(err);
     }
 });
+
+if (btnTrustYours && btnTrustAI && choiceFeedback) {
+    btnTrustYours.addEventListener("click", () => {
+        choiceFeedback.textContent = "You trust your photo. Human instinct still leads the way.";
+    });
+
+    btnTrustAI.addEventListener("click", () => {
+        choiceFeedback.textContent = "You trust the AI. Interesting—algorithmic judgment is starting to feel convincing.";
+    });
+}
