@@ -22,7 +22,7 @@ uploadInput.addEventListener("change", async function () {
     formData.append("image", file);
 
     try {
-        const res = await fetch("http://127.0.0.1:5000/upload", {
+        const res = await fetch("https://your-app.onrender.com/result?t=", {
             method: "POST",
             body: formData
         });
@@ -31,7 +31,7 @@ uploadInput.addEventListener("change", async function () {
         console.log("Backend:", data);
 
         // LOAD AI RESULT
-        aiImage.src = "http://127.0.0.1:5000/result?t=" + new Date().getTime();
+        aiImage.src = "https://your-app.onrender.com/result?t=" + new Date().getTime();
 
     } catch (err) {
         console.error(err);
