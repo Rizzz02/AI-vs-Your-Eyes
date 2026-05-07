@@ -16,10 +16,11 @@ app = Flask(__name__, static_folder='.', static_url_path='')
 CORS(app)
 
 # Folders
-UPLOAD_FOLDER = Path('uploads')
-OUTPUT_FOLDER = Path('outputs')
-UPLOAD_FOLDER.mkdir(exist_ok=True)
-OUTPUT_FOLDER.mkdir(exist_ok=True)
+BASE_DIR = Path(__file__).resolve().parent
+UPLOAD_FOLDER = BASE_DIR / 'uploads'
+OUTPUT_FOLDER = BASE_DIR / 'outputs'
+UPLOAD_FOLDER.mkdir(parents=True, exist_ok=True)
+OUTPUT_FOLDER.mkdir(parents=True, exist_ok=True)
 
 
 @app.route('/upload', methods=['POST'])
@@ -87,15 +88,20 @@ def upload_image():
         x2 = min(width, x1 + crop_w)
         y2 = min(height, y1 + crop_h)
 
-        crop = image[y1:y2, x1:x2]
+        if x2 <= x1 or y2 <= y1:
+            crop = image
+        else:
+            crop = image[y1:y2, x1:x2]
 
         print(f"Crop size: {crop.shape[1]}x{crop.shape[0]}")
 
         # Save result
         output_path = OUTPUT_FOLDER / 'result.jpg'
-        cv2.imwrite(str(output_path), crop)
+        success = cv2.imwrite(str(output_path), crop)
+        print("Saved:", success)
+        print("File exists:", output_path.exists())
 
-        print(f"✓ Saved result to: {output_path}")
+        #print(f"✓ Saved result to: {output_path}")
 
         # Return JSON (frontend will fetch /result)
         return jsonify({
@@ -108,6 +114,8 @@ def upload_image():
         traceback.print_exc()
         return jsonify({'error': str(e)}), 500
 
+
+from flask import send_from_directory
 
 @app.route('/result', methods=['GET'])
 def get_result():
