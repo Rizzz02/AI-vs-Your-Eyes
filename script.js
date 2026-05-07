@@ -5,12 +5,36 @@ const btnTrustYours = document.getElementById("btn-trust-yours");
 const btnTrustAI = document.getElementById("btn-trust-ai");
 const choiceFeedback = document.getElementById("choice-feedback");
 
+function showFeedback(message, isAIChoice) {
+    if (!choiceFeedback) return;
+
+    choiceFeedback.textContent = message;
+    choiceFeedback.classList.add("is-visible");
+
+    if (btnTrustYours) btnTrustYours.classList.remove("active");
+    if (btnTrustAI) btnTrustAI.classList.remove("active");
+
+    if (isAIChoice) {
+        if (btnTrustAI) btnTrustAI.classList.add("active");
+    } else {
+        if (btnTrustYours) btnTrustYours.classList.add("active");
+    }
+}
+
 uploadInput.addEventListener("change", async function () {
     const file = this.files[0];
 
     if (!file) return;
 
     console.log("File selected:", file.name);
+
+    // Reset feedback when a new image is uploaded
+    if (choiceFeedback) {
+        choiceFeedback.textContent = "";
+        choiceFeedback.classList.remove("is-visible");
+    }
+    if (btnTrustYours) btnTrustYours.classList.remove("active");
+    if (btnTrustAI) btnTrustAI.classList.remove("active");
 
     // SHOW ORIGINAL IMAGE
     const reader = new FileReader();
@@ -26,7 +50,7 @@ uploadInput.addEventListener("change", async function () {
 
     try {
         aiImage.src = "https://i.gifer.com/ZZ5H.gif";
-        
+
         const res = await fetch("https://ai-vs-your-eyes.onrender.com/upload", {
             method: "POST",
             body: formData
@@ -45,10 +69,16 @@ uploadInput.addEventListener("change", async function () {
 
 if (btnTrustYours && btnTrustAI && choiceFeedback) {
     btnTrustYours.addEventListener("click", () => {
-        choiceFeedback.textContent = "You trust your photo. Human instinct still leads the way.";
+        showFeedback(
+            "You trust your photo. Human instinct still leads the way.<br><strong>Thank you for participating.</strong>",
+            false
+        );
     });
 
     btnTrustAI.addEventListener("click", () => {
-        choiceFeedback.textContent = "You trust the AI. Interesting—algorithmic judgment is starting to feel convincing.";
+        showFeedback(
+            "You trust the AI. Interesting—algorithmic judgment is starting to feel convincing.<br><strong>Thank you for participating.</strong>",
+            true
+        );
     });
 }
