@@ -22,6 +22,8 @@ uploadInput.addEventListener("change", async function () {
     formData.append("image", file);
 
     try {
+        aiImage.src = "https://i.gifer.com/ZZ5H.gif";
+        
         const res = await fetch("https://ai-vs-your-eyes.onrender.com/upload", {
             method: "POST",
             body: formData
