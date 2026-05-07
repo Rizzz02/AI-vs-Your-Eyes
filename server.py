@@ -98,9 +98,12 @@ def upload_image():
         # Save result
         output_path = OUTPUT_FOLDER / 'result.jpg'
         success = cv2.imwrite(str(output_path), crop)
+
+        import time
+        time.sleep(0.3)
+
         print("Saved:", success)
         print("File exists:", output_path.exists())
-
         #print(f"✓ Saved result to: {output_path}")
 
         # Return JSON (frontend will fetch /result)
@@ -120,11 +123,11 @@ from flask import send_from_directory
 @app.route('/result', methods=['GET'])
 def get_result():
     try:
-        output_path = OUTPUT_FOLDER / 'result.jpg'
-        if output_path.exists():
-            return send_file(str(output_path), mimetype='image/jpeg')
-        else:
-            return jsonify({'error': 'No result found'}), 404
+        return send_from_directory(OUTPUT_FOLDER, 'result.jpg')
+    except Exception as e:
+        print("ERROR serving result:", e)
+        return jsonify({'error': 'No result found'}), 404
+        
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
