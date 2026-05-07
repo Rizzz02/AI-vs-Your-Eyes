@@ -12,7 +12,7 @@ from pathlib import Path
 from PIL import Image
 import traceback
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='.', static_url_path='')
 CORS(app)
 
 # Folders
