@@ -3,7 +3,7 @@ AI vs Your Eye - Backend Server (FINAL CLEAN VERSION)
 Handles AVIF + OpenCV saliency safely
 """
 
-from flask import Flask, request, jsonify, send_file
+from flask import Flask, request, jsonify, send_file, send_from_directory
 from flask_cors import CORS
 import cv2
 import numpy as np
@@ -119,6 +119,10 @@ def get_result():
             return jsonify({'error': 'No result found'}), 404
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
+@app.route('/')
+def home():
+    return send_from_directory('.', 'index.html')
 
 
 @app.route('/health', methods=['GET'])
