@@ -838,5 +838,71 @@ button {
 
   .footer__copy {
     margin-top: var(--space-xs);
+
+   /* ============================================================
+   COMPARISON FEEDBACK POPUP
+   ============================================================ */
+.comparison__feedback {
+  width: min(100%, 720px);
+  margin-top: var(--space-md);
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(12px) scale(0.98);
+  transition:
+    opacity 250ms ease,
+    transform 250ms ease,
+    max-height 250ms ease,
+    padding 250ms ease,
+    border-color 250ms ease,
+    background 250ms ease;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  line-height: 1.8;
+  color: var(--color-text);
+  text-align: center;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: transparent;
+}
+
+.comparison__feedback.is-visible {
+  max-height: 220px;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  padding: 1rem 1.2rem;
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(17, 17, 17, 0.9);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(10px);
+}
+
+/* ============================================================
+   TRUST BUTTON ACTIVE STATE
+   ============================================================ */
+.btn--trust.active {
+  border-color: var(--color-highlight);
+  box-shadow:
+    0 0 0 1px rgba(0, 209, 255, 0.15),
+    0 0 18px rgba(0, 209, 255, 0.12);
+  transform: translateY(-1px);
+}
+
+.btn--trust-yours.active {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.btn--trust-ai.active {
+  color: var(--color-highlight);
+  background: rgba(0, 209, 255, 0.08);
+}
+
+/* Mobile tweak */
+@media (max-width: 600px) {
+  .comparison__feedback {
+    width: 100%;
+    font-size: 0.75rem;
+    line-height: 1.7;
   }
 }
